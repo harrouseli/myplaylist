@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <PreferenceCategory
+        android:title="@string/preferences">
+        <CheckBoxPreference
+            android:key="@string/pref_key_looping"
+            android:title="@string/pref_title_looping"
+            android:summary="@string/pref_summary_looping" />
+        <CheckBoxPreference
+            android:key="@string/pref_key_random"
+            android:title="@string/pref_title_random"
+            android:summary="@string/pref_summary_random" />
+    </PreferenceCategory>
+
+    <PreferenceCategory>
+        <Preference android:title="@string/validate"
+            android:key="button" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

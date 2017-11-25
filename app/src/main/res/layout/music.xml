@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+
+   <TextView
+        android:id="@+id/music_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#C0C0C0"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/music_artist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#C0C0C0"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/music_file"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/music_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/music_duration"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/music_duration_view"
+        android:textColor="#C0C0C0"
+        android:textSize="16sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

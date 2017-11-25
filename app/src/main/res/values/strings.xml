@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Playlist</string>
+    <string name="play_mode">Play mode</string>
+    <string name="volume_management">Sound control</string>
+    <string name="cancel">Cancel</string>
+    <string name="about">About</string>
+    <string name="about_text">This application was made in March 2015 by Harrous Elias</string>
+
+    <string name="playlist_name">Name of the playlist</string>
+    <string name="playlist_music_choice">Select the musics</string>
+    <string name="playlist_create_button">Create the playlist</string>
+    <string name="playlist_edit_button">Edit</string>
+    <string name="playlist_delete_button">Delete</string>
+    <string name="playlist_management_choice">What do you want to do with this playlist ?</string>
+    <string name="playlist_edit">Edit the playlist</string>
+    <string name="title_activity_play_list_create">Creation of a playlist</string>
+    <string name="title_activity_play_list_edit">Edition of the playlist</string>
+    <string name="title_activity_play_list_visualize">Detail of the playlist</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+
+    <string name="error_playlist_creation">An error occurred during the creation of the playlist</string>
+
+    <string name="error_load_music">The music file is not found</string>
+    <string name="error_number_of_music">There is not any music in this playlist</string>
+
+
+    <!-- Preference Activity -->
+    <string name="preferences">Preferences</string>
+    <string name="pref_key_looping">looping_key</string>
+    <string name="pref_title_looping">Loop the playlist</string>
+    <string name="pref_summary_looping">Reload the playlist when it finished</string>
+    <string name="pref_key_random">random_key</string>
+    <string name="pref_title_random">Random play</string>
+    <string name="pref_summary_random">Load musics randomly</string>
+    <string name="volume_seek_bar">Volume</string>
+    <string name="validate">Validate</string>
+
+</resources>

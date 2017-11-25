@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Playlist</string>
+    <string name="play_mode">Mode de lecture</string>
+    <string name="volume_management">Gestion du son</string>
+    <string name="cancel">Annuler</string>
+    <string name="about">A propos</string>
+    <string name="about_text">Cette application a été réalisée en mars 2015 par Harrous Elias</string>
+
+    <string name="playlist_name">Nom de la playlist</string>
+    <string name="playlist_music_choice">Selectionnez les musiques</string>
+    <string name="playlist_create_button">Créer la playlist</string>
+    <string name="playlist_edit_button">Editer</string>
+    <string name="playlist_delete_button">Supprimer</string>
+    <string name="playlist_management_choice">Que voulez-vous faire avec cette playlist ?</string>
+    <string name="playlist_edit">Editer la playlist</string>
+    <string name="title_activity_play_list_create">Création de la playlist</string>
+    <string name="title_activity_play_list_edit">Edition de la playlist</string>
+    <string name="title_activity_play_list_visualize">Détails de la playlist</string>
+    <string name="start">Démarrer</string>
+    <string name="stop">Arrêter</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Reprise</string>
+
+    <string name="error_playlist_creation">Une erreur s\'est produite durant la création de la playlist</string>
+    <string name="error_load_music">L\'emplacement de la musique est introuvable</string>
+    <string name="error_number_of_music">Il n\'y a aucune musique dans cette playlist</string>
+
+    <!-- Preference Activity -->
+    <string name="preferences">Paramètres</string>
+    <string name="pref_key_looping">looping_key</string>
+    <string name="pref_title_looping">Lecture en boucle</string>
+    <string name="pref_summary_looping">Relance la playlist une fois terminée</string>
+    <string name="pref_key_random">random_key</string>
+    <string name="pref_title_random">Lecture aléatoire</string>
+    <string name="pref_summary_random">Choix aléatoire des musiques</string>
+    <string name="volume_seek_bar">Volume</string>
+    <string name="validate">Valider</string>
+
+</resources>

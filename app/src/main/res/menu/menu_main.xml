@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/play_mode" android:title="@string/play_mode"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/volume_management" android:title="@string/volume_management"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/playlist_create" android:icon="@drawable/add" android:title=""
+        android:orderInCategory="100" app:showAsAction="always" />
+    <item android:id="@+id/about" android:title="@string/about"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/exit" android:icon="@drawable/exit" android:title=""
+        android:orderInCategory="100" app:showAsAction="always" />
+
+</menu>
