@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<!--
+   This file is part of MyPlaylist.
 
+    MyPlaylist is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MyPlaylist is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with MyPlaylist.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
     <string name="app_name">My Playlist</string>
     <string name="play_mode">Mode de lecture</string>
     <string name="volume_management">Gestion du son</string>
     <string name="cancel">Annuler</string>
     <string name="about">A propos</string>
-    <string name="about_text">Cette application a été réalisée en mars 2015 par Harrous Elias</string>
+    <string name="about_text">MyPlaylist est une application de gestion de liste de musiques\n\nDéveloppée par harrouseli (2015-2017)</string>
 
     <string name="playlist_name">Nom de la playlist</string>
     <string name="playlist_music_choice">Selectionnez les musiques</string>
@@ -37,5 +53,4 @@
     <string name="pref_summary_random">Choix aléatoire des musiques</string>
     <string name="volume_seek_bar">Volume</string>
     <string name="validate">Valider</string>
-
 </resources>

@@ -1,3 +1,18 @@
+//    This file is part of MyPlaylist.
+//
+//    MyPlaylist is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    MyPlaylist is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with MyPlaylist.  If not, see <http://www.gnu.org/licenses/>.
+
 package fr.eisti.android.myplaylist.activities;
 
 import android.app.AlertDialog;
@@ -17,6 +32,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eisti.android.myplaylist.BuildConfig;
 import fr.eisti.android.myplaylist.R;
 import fr.eisti.android.myplaylist.beans.PlayList;
 import fr.eisti.android.myplaylist.dao.MyDataBase;
@@ -82,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
              }
              case R.id.about : {
                  AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                 builder.setMessage(R.string.about_text);
+                 builder.setMessage(getString(R.string.about_text)+"\n\nVersion : "+BuildConfig.VERSION_NAME);
                  AlertDialog alert = builder.create();
                  alert.show();
                  return true;
