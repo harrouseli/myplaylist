@@ -19,9 +19,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.eisti.android.myplaylist.utils.PlayListManagement">
-    <item android:id="@+id/play_mode" android:title="@string/play_mode"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/volume_management" android:title="@string/volume_management"
+    <item android:id="@+id/play_mode" android:title="@string/params"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/return_home" android:icon="@drawable/home" android:title=""
         android:orderInCategory="100" app:showAsAction="ifRoom" />

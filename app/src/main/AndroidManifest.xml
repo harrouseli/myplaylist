@@ -45,9 +45,6 @@
             android:name=".activities.PreferencesActivity">
         </activity>
 
-        <activity
-            android:name=".activities.SeekBarActivity">
-        </activity>
     </application>
 
 </manifest>

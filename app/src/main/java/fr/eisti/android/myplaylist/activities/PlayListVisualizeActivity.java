@@ -112,11 +112,6 @@ public class PlayListVisualizeActivity extends ActionBarActivity {
                 startActivity(intent);
                 return true;
             }
-            case R.id.volume_management : {
-                Intent intent = new Intent(getApplicationContext(), SeekBarActivity.class);
-                startActivity(intent);
-                return true;
-            }
             case R.id.about : {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PlayListVisualizeActivity.this);
                 builder.setMessage(R.string.about_text);
@@ -193,8 +188,8 @@ public class PlayListVisualizeActivity extends ActionBarActivity {
                 //long musicId = Long.valueOf(((TextView) ((LinearLayout) arg1).getChildAt(3)).getText().toString()).longValue();
                 Log.d(TAG, "Playlist started = "+playList.getId());
                 Log.d(TAG, "Music selected = "+pos);
-                backgroundSoundServiceIntent .putExtra("PLAYLIST_ID", playList.getId());
-                backgroundSoundServiceIntent .putExtra("MUSIC_INDEX", pos);
+                backgroundSoundServiceIntent.putExtra("PLAYLIST_ID", playList.getId());
+                backgroundSoundServiceIntent.putExtra("MUSIC_INDEX", pos);
                 startService(backgroundSoundServiceIntent);
                 finish();
                 startActivity(getIntent());

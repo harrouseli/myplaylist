@@ -91,11 +91,6 @@ public class MainActivity extends ActionBarActivity {
                  startActivity(intent);
                  return true;
              }
-             case R.id.volume_management : {
-                 Intent intent = new Intent(getApplicationContext(), SeekBarActivity.class);
-                 startActivity(intent);
-                 return true;
-             }
              case R.id.about : {
                  AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                  builder.setMessage(getString(R.string.about_text)+"\n\nVersion : "+BuildConfig.VERSION_NAME);

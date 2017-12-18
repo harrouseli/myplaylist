@@ -19,7 +19,7 @@
 <resources>
 
     <string name="app_name">My Playlist</string>
-    <string name="play_mode">Play mode</string>
+    <string name="params">Parameters</string>
     <string name="volume_management">Sound control</string>
     <string name="cancel">Cancel</string>
     <string name="about">About</string>
@@ -54,7 +54,6 @@
     <string name="pref_key_random">random_key</string>
     <string name="pref_title_random">Random play</string>
     <string name="pref_summary_random">Load musics randomly</string>
-    <string name="volume_seek_bar">Volume</string>
     <string name="validate">Validate</string>
 
 </resources>

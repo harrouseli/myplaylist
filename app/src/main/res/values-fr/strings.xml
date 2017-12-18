@@ -18,7 +18,7 @@
 
 <resources>
     <string name="app_name">My Playlist</string>
-    <string name="play_mode">Mode de lecture</string>
+    <string name="params">Paramètres</string>
     <string name="volume_management">Gestion du son</string>
     <string name="cancel">Annuler</string>
     <string name="about">A propos</string>
@@ -51,6 +51,5 @@
     <string name="pref_key_random">random_key</string>
     <string name="pref_title_random">Lecture aléatoire</string>
     <string name="pref_summary_random">Choix aléatoire des musiques</string>
-    <string name="volume_seek_bar">Volume</string>
     <string name="validate">Valider</string>
 </resources>
