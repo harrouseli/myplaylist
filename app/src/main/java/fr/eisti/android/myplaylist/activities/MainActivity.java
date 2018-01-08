@@ -101,6 +101,12 @@ public class MainActivity extends ActionBarActivity {
              case R.id.exit : {
                  stopService(new Intent(this, BackgroundSoundService.class));
                  finishAffinity();
+                 return true;
+             }
+             case R.id.playlist_artists : {
+                 Intent intent = new Intent(getApplicationContext(), PlayListByArtistsActivity.class);
+                 startActivity(intent);
+                 return true;
              }
          }
 

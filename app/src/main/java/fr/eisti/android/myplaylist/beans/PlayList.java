@@ -18,8 +18,6 @@ package fr.eisti.android.myplaylist.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eisti.android.myplaylist.beans.Music;
-
 /**
  * Created by Harrous Elias on 02/03/2015
  */
@@ -33,13 +31,19 @@ public class PlayList {
 
     public PlayList(long id) {
         this.id = id;
-        this.musicList = new ArrayList<Music>();
+        this.musicList = new ArrayList<>();
+    }
+
+    public PlayList(List<Music> musicList) {
+        this.id = -1;
+        this.name = null;
+        this.musicList = musicList;
     }
 
     public PlayList(long id, String name) {
         this.id = id;
         this.name = name;
-        this.musicList = new ArrayList<Music>();
+        this.musicList = new ArrayList<>();
 
     }
 

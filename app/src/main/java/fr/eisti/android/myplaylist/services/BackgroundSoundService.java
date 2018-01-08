@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import fr.eisti.android.myplaylist.R;
@@ -52,6 +53,7 @@ import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
 public class BackgroundSoundService extends Service implements MediaPlayer.OnCompletionListener {
 
     public static MediaPlayer mediaPlayer = null;
+    public static String playlistType = null;
 
     private AudioManager audioManager;
     private AudioManager.OnAudioFocusChangeListener afChangeListener;
@@ -104,16 +106,22 @@ public class BackgroundSoundService extends Service implements MediaPlayer.OnCom
      * @return
      */
     public int onStartCommand(Intent intent, int flags, int startId) {
-        playlist = PlayListUtils.getPlayListById(myDataBase, intent.getLongExtra("PLAYLIST_ID", -1));
-        currentMusicIndex = intent.getIntExtra("MUSIC_INDEX", 0);
-
-        Log.d(TAG, "Selected playlist : "+playlist.getId() + " | "+playlist.getName());
-        Log.d(TAG, "Should launch the music with index "+currentMusicIndex+" : "+playlist.getMusicList().get(currentMusicIndex).getTitle());
+        playlistType = intent.getStringExtra("PLAYLIST_TYPE");
+        if ("artists".equals(playlistType)) {
+            playlist = new PlayList((List<Music>)intent.getSerializableExtra("MUSICS_LIST"));
+        } else {
+            playlist = PlayListUtils.getPlayListById(myDataBase, intent.getLongExtra("PLAYLIST_ID", -1));
+        }
 
         if (playlist != null && playlist.getMusicList().size() > 0) {
+            currentMusicIndex = intent.getIntExtra("MUSIC_INDEX", 0);
+
+            Log.d(TAG, "Selected playlist : " + playlist.getId() + " | " + playlist.getName());
+            Log.d(TAG, "Should launch the music with index " + currentMusicIndex + " : " + playlist.getMusicList().get(currentMusicIndex).getTitle());
+
             if (isRandomMode) {
                 manageMusicOrder();
-                Log.d(TAG, "After ordering the list, we launch the music with index "+currentMusicIndex+" : "+playlist.getMusicList().get(currentMusicIndex).getTitle());
+                Log.d(TAG, "After ordering the list, we launch the music with index " + currentMusicIndex + " : " + playlist.getMusicList().get(currentMusicIndex).getTitle());
             }
             manageAudioFocusChange();
             requestAudioFocus();

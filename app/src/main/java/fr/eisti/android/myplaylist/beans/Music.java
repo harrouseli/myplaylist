@@ -15,10 +15,12 @@
 
 package fr.eisti.android.myplaylist.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by Harrous Elias on 02/03/2015
  */
-public class Music {
+public class Music implements Serializable {
 
     private long id;
     private String file;

@@ -23,6 +23,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -30,14 +32,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import fr.eisti.android.myplaylist.R;
+import fr.eisti.android.myplaylist.beans.Artist;
 import fr.eisti.android.myplaylist.beans.Music;
 import fr.eisti.android.myplaylist.beans.PlayList;
 import fr.eisti.android.myplaylist.dao.MyDataBase;
+import fr.eisti.android.myplaylist.services.BackgroundSoundService;
 
 /**
  * Created by Harrous Elias on 06/11/2017
@@ -56,8 +67,8 @@ public class PlayListUtils {
         nameCol = task_results.getColumnIndex("name");
 
         while (task_results.moveToNext()) {
-            playList = new PlayList(task_results.getInt(idCol),task_results.getString(nameCol));
-            musics_results = db.rawQuery("SELECT * FROM MUSIC m, PLAYLIST_MUSICS pm WHERE pm.idPlaylist = " + task_results.getInt(idCol)+ " AND m.id = pm.idMusic", null);
+            playList = new PlayList(task_results.getInt(idCol), task_results.getString(nameCol));
+            musics_results = db.rawQuery("SELECT * FROM MUSIC m, PLAYLIST_MUSICS pm WHERE pm.idPlaylist = " + task_results.getInt(idCol) + " AND m.id = pm.idMusic", null);
             idMusicCol = musics_results.getColumnIndex("id");
             nameFileCol = musics_results.getColumnIndex("file");
             nameMusicCol = musics_results.getColumnIndex("title");
@@ -74,6 +85,7 @@ public class PlayListUtils {
 
     // TODO Apparently it only takes musics from the folder 'Music' from an external storage
     // TODO Find a way to get all musics, from any folder located in an external or internal storage
+
     /**
      * Find music in the music folder of the phone, and display them
      */
@@ -186,7 +198,7 @@ public class PlayListUtils {
     public static void deletePlayListById(SQLiteDatabase db, long playlistId) {
         try {
             db.beginTransaction();
-            db.execSQL("DELETE FROM PLAYLIST_MUSICS WHERE idPlaylist="+playlistId);
+            db.execSQL("DELETE FROM PLAYLIST_MUSICS WHERE idPlaylist=" + playlistId);
             db.execSQL("DELETE FROM PLAYLIST WHERE id=" + playlistId);
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -196,4 +208,82 @@ public class PlayListUtils {
         }
     }
 
+
+    public static List<Artist> getArtistsList(ContentResolver musicResolver) {
+        List<Artist> artistsList = new ArrayList<>();
+        Map<String, List<Music>> artistsMusics = new HashMap<>();
+        String path = Environment.getExternalStorageDirectory() + "/Music/";
+        Uri musicUri = MediaStore.Audio.Media.getContentUriForPath(path);
+        Cursor musicCursor = musicResolver.query(musicUri, null, null, null, null);
+
+        if (musicCursor != null && musicCursor.moveToFirst()) {
+
+            int fileColumn = musicCursor.getColumnIndex(MediaStore.Audio.Media.DATA);
+            int titleColumn = musicCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
+            int artistColumn = musicCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
+            int durationColumn = musicCursor.getColumnIndex(MediaStore.Audio.Media.DURATION);
+            do {
+                String thisFile = musicCursor.getString(fileColumn);
+                String thisTitle = musicCursor.getString(titleColumn);
+                String thisArtist = musicCursor.getString(artistColumn);
+                Long thisDuration = musicCursor.getLong(durationColumn);
+                Music music = new Music(thisFile, thisTitle, thisArtist, thisDuration);
+
+                //TODO Change the 'Samsung' test and check if the music is a real music (not a ring phone or something else)
+                if (thisArtist != null && thisArtist != "" && !thisArtist.toLowerCase().contains("unknown") && !thisArtist.toLowerCase().contains("samsung")) {
+                    if (artistsMusics.size() == 0 || (artistsMusics.size() != 0 && artistsMusics.get(thisArtist) == null)) {
+                        List<Music> musicList = new ArrayList<>();
+                        musicList.add(music);
+                        artistsMusics.put(thisArtist, musicList);
+                    } else {
+                        List<Music> musicList = artistsMusics.get(thisArtist);
+                        musicList.add(music);
+                        artistsMusics.put(thisArtist, musicList);
+                    }
+                }
+            }
+            while (musicCursor.moveToNext());
+
+            musicCursor.close();
+        }
+
+        for (Map.Entry<String, List<Music>> entry : artistsMusics.entrySet()) {
+            String key = entry.getKey();
+            List<Music> value = entry.getValue();
+            artistsList.add(new Artist(entry.getKey(), entry.getValue()));
+        }
+
+        return artistsList;
+    }
+
+
+    public static boolean checkIfPlaylistContainsArtist(PlayList playlist, String artist) {
+        boolean isContained = false;
+        if (playlist != null) {
+            for (int i = 0; i < playlist.getMusicList().size(); i++) {
+                if (artist.equals(playlist.getMusicList().get(i).getAuthor())) {
+                    isContained = true;
+                    break;
+                }
+            }
+        }
+        return isContained;
+    }
+
+
+    public static List<String> getRunningArtistsList() {
+        List<String> artistsList = new ArrayList<>();
+        Set<String> artistsSet = new HashSet<>();
+        List<Music> musics = null;
+        if (BackgroundSoundService.playlist != null) {
+            musics = BackgroundSoundService.playlist.getMusicList();
+            if (musics != null && !musics.isEmpty()) {
+                for (int i=0; i<musics.size(); i++) {
+                    artistsSet.add(musics.get(i).getAuthor());
+                }
+            }
+        }
+        artistsList.addAll(artistsSet);
+        return artistsList;
+    }
 }

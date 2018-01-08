@@ -25,6 +25,10 @@
     <string name="about">About</string>
     <string name="about_text">MyPlaylist is a playlist managing application\n\nDeveloped by harrouseli (2015-2017)</string>
 
+    <string name="playlist_by_artists">Playlist by Artists</string>
+    <string name="playlist_tags">Playlist by Tags</string>
+    <string name="musics_number">Number of musics</string>
+
     <string name="playlist_name">Name of the playlist</string>
     <string name="playlist_music_choice">Select the musics</string>
     <string name="playlist_create_button">Create the playlist</string>
@@ -35,6 +39,7 @@
     <string name="title_activity_play_list_create">Creation of a playlist</string>
     <string name="title_activity_play_list_edit">Edition of the playlist</string>
     <string name="title_activity_play_list_visualize">Detail of the playlist</string>
+    <string name="title_activity_play_list_by_artists">List of artists</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="pause">Pause</string>
